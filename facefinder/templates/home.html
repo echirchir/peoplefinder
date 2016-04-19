@@ -7,10 +7,9 @@
         <div class="col s12 m10 offset-m1">
             <div class="card hoverable">
                 <div class="card-content">
-                {{ image_urls }}
                   <ul>
                     {% for url in image_urls %}
-                        <li>{{ url }}</li>
+                        <li><img src="{{ url }}" /></li>
                     {% endfor %}
                     </ul>
                 </div>

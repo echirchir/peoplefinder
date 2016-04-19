@@ -9,7 +9,6 @@ def home(request):
 
     image_urls = search(urls)
 
-    # print(len(image_urls))
     return render(request, 'home.html', {'image_urls': image_urls})
 
 def search(url_list):
@@ -28,9 +27,7 @@ def search(url_list):
     search_results = api.search("q='#desaparecidosEC'")
 
     for result in search_results:
-
-        url_list.append(result.entities['media'][0]['media_url'])
-        # if result.entities['media'] is not None:
-            # url_list.append(result.entities['media'][0]['media_url'])
+        if result.entities.get('media') is not None:
+            url_list.append(result.entities.get('media')[0]['media_url'])
 
     return url_list
