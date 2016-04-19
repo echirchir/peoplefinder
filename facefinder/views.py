@@ -5,13 +5,11 @@ import tweepy
 
 def home(request):
 
-    urls = []
-
-    image_urls = search(urls)
+    image_urls = search()
 
     return render(request, 'home.html', {'image_urls': image_urls})
 
-def search(url_list):
+def search():
     consumer_key = 'gqdtIop6EyPtU0kWRb5sqehhd'
     consumer_secret = '9gGJOsfmCaFt5RpxYIy1YTyb7UKBO5sL1qc8Leopa3oaYi3ZPn'
     access_token = '1564127736-UGHvrFKk6XUIh2tSrDW4FtKS5fLj4qxZpguwWHM'
@@ -25,6 +23,8 @@ def search(url_list):
     api = tweepy.API(auth)
 
     search_results = api.search("q='#desaparecidosEC'")
+
+    url_list = []
 
     for result in search_results:
         if result.entities.get('media') is not None:
